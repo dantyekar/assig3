@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dnf8fdicn
+  api_key: '447928711875588'
+  api_secret: hYGWHyBZ6uPLJPJCmjD_8yI4hRo
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: hxmfkp63l
+  api_key: '736931482497897'
+  api_secret: AQQE7ZI1ijo7llV1SHSTEe-ASVI
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dnf8fdicn
+  api_key: '447928711875588'
+  api_secret: hYGWHyBZ6uPLJPJCmjD_8yI4hRo
+  enhance_image_tag: true
+  static_image_support: false
