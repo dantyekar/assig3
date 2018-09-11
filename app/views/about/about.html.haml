@@ -1,0 +1,10 @@
+- provide(:title, "About")
+.aboutHeader
+  = render 'layouts/topHeader'
+  .jumbotron.text-center
+    %div
+      %h1.title.texty About life
+      %br/
+      %p.description.texty
+        "Life is really simple, but we insist on making it complicated." -Confucius
+= render 'layouts/flash_messages'

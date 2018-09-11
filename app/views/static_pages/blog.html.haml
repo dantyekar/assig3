@@ -1,0 +1,10 @@
+- provide(:title, "Blog")
+.blogHeader
+  = render 'layouts/topHeader'
+  .jumbotron.text-center
+    %div
+      %h1.title.texty Blog posts time!
+      %br
+        %p.description.texty Visited our restaurant? Leave us some feedbeck  we'll make it count!
+  = render 'layouts/flash_messages'
+  / insert html body here

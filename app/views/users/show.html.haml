@@ -1,0 +1,24 @@
+.header1stuff
+  = render 'layouts/topHeader'
+= render 'layouts/flash_messages'
+.row
+  - if @user
+    .col-xs-4
+      .card.medium
+        .card-image
+          = image_tag @user.avatar.url
+        .card-content
+          %p
+            Name: #{@user.first_name} #{@user.last_name}
+          %p
+            Email: #{@user.email}
+        .card-action
+          = link_to 'Edit Profile', edit_user_path(@user.id)
+          / </div>
+          / <div class='card-action'>
+          = link_to 'View Orders', :args => { :show_all => true , :title => 'All Orders'}
+    .col.s8
+      %h4.order_header= @title
+      = render 'layouts/orders_page'
+  - else
+    .container There is no user to display

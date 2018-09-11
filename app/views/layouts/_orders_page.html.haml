@@ -1,0 +1,22 @@
+.container.text-center
+  %h2 Your orders
+  .container.text-center
+    .body
+      %table.table-striped
+        %thead
+          %tr
+            %th.col-md-2{ 'data-field' => 'name' } Order
+            %th.col-md-1{ 'data-field' => 'price' } Total
+            %th.col-md-2{ 'data-field' => 'price' } Cost
+            %th.col-md-2{ 'data-field' => 'price' } Time
+            %th.col-md-1{ 'data-field' => 'price' } Status
+          %tbody
+            - @orders.each do |order|
+              %tr
+                %td.col-md-2 Order: #{order.id}
+                %td.col-md-1
+                  $#{order.total || 0.0}
+                %td.col-md-2 $#{order.delivery_cost || 0.0}
+                %td.col-md-2= time_ago_in_words(order.created_at, include_seconds: true) + ' ago'
+                %td.col-md-2= order.Status
+                

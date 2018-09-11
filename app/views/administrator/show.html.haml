@@ -1,0 +1,8 @@
+.header1stuff
+  = render 'layouts/topHeader'
+= render 'layouts/flash_messages'
+.row.full-height
+  = render 'layouts/dashboard_menu'
+  .col.s10.full-height.scroll-bar
+    #show
+      = render 'administrator/orders'

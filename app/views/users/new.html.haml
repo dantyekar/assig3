@@ -1,0 +1,39 @@
+.header1stuff
+  = render 'layouts/topHeader'
+= render 'layouts/flash_messages'
+.row.container.full-height.scroll-bar
+  %h4 Sign Up
+  / <haml_silent> if !@user.errors.messages.empty? </haml_silent><haml_block>
+  /
+    <haml_silent> @user.errors.messages.each do |error, message| </haml_silent><haml_block>
+    <script>Materialize.toast('<haml_loud> error </haml_loud> <haml_loud> message.to_s </haml_loud>', 5000, 'rounded', 'success')();</script>
+    </haml_block>  </haml_block>
+  = form_for @user, :html => { :multipart => true, :class => 'col-xs-12' } do |f|
+    .row
+      .input-field.col.s6
+        = f.text_field :first_name, :class => 'validate'
+        = f.label :first_name
+        .error= @user.errors.messages[:first_name][0]
+      .input-field.col.s6
+        = f.text_field :last_name, :class => 'validate'
+        = f.label :last_name
+        .error= @user.errors.messages[:last_name][0]
+    .row
+      .input-field.col.s12
+        = f.email_field :email, :class => 'validate'
+        = f.label :email, :class => 'active', 'data-error' => "#{@user.errors.messages['email']}"
+        .error= @user.errors.messages[:email][0]
+    .row
+      .input-field.col.s12
+        = f.password_field :password, :class => 'validate'
+        = f.label :password
+        .error= @user.errors.messages[:password][0]
+    .row
+      .input-field.col.s12
+        = f.password_field :password_confirmation, :class => 'validate'
+        = f.label :password_confirmation
+        .error= @user.errors.messages[:password_confirmation][0]
+      .row
+        .col.s12
+          = f.file_field :avatar
+      = f.submit 'Sign up', :class => 'btn'

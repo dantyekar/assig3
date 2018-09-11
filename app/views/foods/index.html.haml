@@ -1,0 +1,52 @@
+- provide(:title, 'Service')
+.serviceHeader
+  = render 'layouts/topHeader'
+  .jumbotron.text-center
+    %div
+      %h1.title.texty Menu
+      %img{height: '50px', src: 'https://forums.autodesk.com/autodesk/attachments/autodesk/706/80968/2/0001.png', style: 'filter:invert(100%);', width: '50px'}/
+      %img{height: '50px', src: 'https://forums.autodesk.com/autodesk/attachments/autodesk/706/80968/2/0001.png', style: 'filter:invert(100%);', width: '50px'}/
+      %i.fas.fa-utensils
+      %img{height: '50px', src: 'https://forums.autodesk.com/autodesk/attachments/autodesk/706/80968/2/0001.png', style: 'filter:invert(100%);', width: '50px'}/
+      %img{height: '50px', src: 'https://forums.autodesk.com/autodesk/attachments/autodesk/706/80968/2/0001.png', style: 'filter:invert(100%);', width: '50px'}/
+      %br/
+      %p.description.texty Our menu contains a range of all sorts of foods that might be just right for you.
+= render 'layouts/sortingNav'
+
+= render 'layouts/flash_messages'
+
+.row
+  .col-xs-9
+    .h3= (!@category.nil?) ? @category.title : 'All cuisines'
+    .row
+      - @foods = (!@category.nil?) ? @category.foods : @foods
+      - @foods.each do |food|
+        .col-xs12-md6-xl4
+          .card
+            .card-image
+              %span.activator
+              = link_to(food) do
+                = image_tag((food.food_image.url || 'nigerian-jollof-rice.jpg'), width: '100%', height: 'auto', style: 'max-width:100%', class: 'image-thumb', alt: 'food')
+                %span.card-title= food.name
+            .card-action
+              - if food.sales[:status]
+                %span.price-tag
+                  %s
+                    $#{food.price}
+                %span.price-tag
+                  Sales! $#{food.sales[:price]}
+              - else
+                %span.price-tag
+                  $#{food.price}
+              .right
+                %i.fas.fa-shopping-cart
+                = link_to "                                                                                           |
+                  #{this_food_in_cart(food)}", carts_path, class: 'cart left no_left_pad no-right-margin', id: 'cart' |
+              - if food.status == 'available'
+                = button_to 'Add to cart', cart_items_path(food_id: food.id)
+              - else
+                %p Out of stock
+            .card-reveal
+              %span.card-title.grey-text.text-darken-4
+                = food.name
+              %p= food.description

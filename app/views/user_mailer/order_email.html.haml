@@ -1,0 +1,60 @@
+.mailer{ :style => 'border: 1px solid black; padding: 10px; margin: 30px 100px; text-align: center' }
+  .full-height.scroll-bar
+    %table.responsive-table
+      %thead
+        %tr{ :style => 'background-color:#BCAAA4;' }
+          %th{ 'data-field' => 'id' } No.
+          %th{ 'data-field' => 'name' } Name
+          %th{ 'data-field' => 'description' } Description
+          %th{ 'data-field' => 'price' } Price
+          %th{ 'data-field' => 'quantity' } Quantity
+          %th{ 'data-field' => 'line total' } Line Total
+      %tbody
+        - @current_order['ordered_items'].each do |index, details|
+          - @current_order['sub_total'] += details['food']['price'] * details['qty']
+          %tr
+            %td= index
+            %td= details['food']['name']
+            %td= details['food']['description']
+            %td= details['food']['price']
+            %td= details['qty']
+            %td
+              N#{@current_order['sub_total']}
+      %tr{ :style => 'border-top:1px solid #3e2511' }
+        %td
+        %td
+        %td
+        %td Subtotal
+        %td
+        %td
+          $#{@current_order['sub_total']}
+      %tr
+        - @current_order['vat']
+        %td
+        %td
+        %td
+        %td VAT
+        %td
+        %td
+          $#{@current_order['vat']}
+      %tr
+        %td
+        %td
+        %td
+        %td Delivery
+        %td
+        %td
+          $#{@current_order['delivery_cost']}
+      %tfoot
+        %tr{ :style => 'border-top:2px solid #3e2511' }
+          - @current_order['vat'] ||= 0
+          - @current_order['total'] = @current_order['sub_total'] + @current_order['delivery_cost'] + @current_order['vat']
+          %td
+          %td
+          %td
+          %td Total
+          %td
+          %td#total
+            $#{@current_order['total']}
+  %p
+    Thanks for choosing #{link_to 'Eureka Caffee', 'www.google.com'}

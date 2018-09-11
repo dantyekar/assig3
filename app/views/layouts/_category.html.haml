@@ -1,0 +1,6 @@
+.col.s3
+  %ul#slide-out.side-nav.fixed.rel
+    %li.first.z-depth-1 Categories
+    - @categories = @categories.nil? ? Category.all : @categories
+    - @categories.each do |category|
+      %li= link_to category.title, category_path(category)

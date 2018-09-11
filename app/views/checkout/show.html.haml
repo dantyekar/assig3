@@ -1,0 +1,13 @@
+.header1stuff
+  = render 'layouts/topHeader'
+= render 'layouts/flash_messages'
+.full-height.scroll-bar
+  .container.text-center
+    %h3 Confirm your order
+    - if @current_order.ordered_items.length == 0
+      %p Your cart is still empty. What's up?'
+    - else
+      = render 'orders/current_order'
+      %div
+        = link_to 'Back to my cart', carts_path, :class => 'btn btn-success in-line left'
+        = button_to 'Make payment', @current_order.paypal_url(@current_user, payment_completed_url), :class => 'btn btn-success in-line left'
