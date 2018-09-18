@@ -18,5 +18,5 @@
                   $#{order.total || 0.0}
                 %td.col-md-2 $#{order.delivery_cost || 0.0}
                 %td.col-md-2= time_ago_in_words(order.created_at, include_seconds: true) + ' ago'
-                %td.col-md-2= order.Status
+                %td.col-md-2= order.status
                 

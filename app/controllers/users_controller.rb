@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :check_if_admin, only: [:destroy]
+  before_action :authorize_admin, only: [:destroy]
 
   def new
     @user = User.new

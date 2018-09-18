@@ -3,11 +3,6 @@
 = render 'layouts/flash_messages'
 .row.container.full-height.scroll-bar
   %h4 Sign Up
-  / <haml_silent> if !@user.errors.messages.empty? </haml_silent><haml_block>
-  /
-    <haml_silent> @user.errors.messages.each do |error, message| </haml_silent><haml_block>
-    <script>Materialize.toast('<haml_loud> error </haml_loud> <haml_loud> message.to_s </haml_loud>', 5000, 'rounded', 'success')();</script>
-    </haml_block>  </haml_block>
   = form_for @user, :html => { :multipart => true, :class => 'col-xs-12' } do |f|
     .row
       .input-field.col.s6

@@ -1,4 +1,4 @@
-class Current_Order
+class Current_Order < PaypalController
   attr_accessor :ordered_items
   attr_accessor :total
   attr_accessor :delivery_cost
@@ -28,36 +28,9 @@ class Current_Order
     @pickup_time = order['details']['pickup_time'].to_i || 0
     @total_pickup_time = add_extra_time(@pickup_time)
     @invoice = args[:invoice] || ''
-    @transaction_id = args[:transaction_id] || ''
+    @transaction_id = args[:txn_id] || ''
     @status = args[:status] || 'pending'
   end
-
-  def paypal_url(current_user, return_url)
-    @user = current_user
-		values = {
-			business: 'bob@bob.co',
-			cmd: '_cart',
-			upload: 1,
-      rm: 2,
-			return: return_url,
-			notify_url: @user.email,
-      "amount_#{@ordered_items.length+1}" => vat,
-      "item_name_#{@ordered_items.length+1}" => 'VAT',
-      "amount_#{@ordered_items.length+2}" => @delivery_cost,
-      "item_name_#{@ordered_items.length+2}" => 'Delivery cost'
-		}
-    counter = 1
-		@ordered_items.each do |index, details|
-			values.merge!({
-				"amount_#{counter}" => details['food']['price'],
-				"item_name_#{counter}" => details['food']['name'],
-				"item_number_#{counter}" => counter,
-				"quantity_#{counter}" => details['qty']
-			})
-      counter += 1
-		end
-    'https://www.sandbox.paypal.com/cgi-bin/webscr?' + values.to_query
-	end
 
   def save_order(current_user)
     user = current_user
@@ -84,7 +57,7 @@ class Current_Order
   private
 
   def add_extra_time(pick_up_time)
-    if (Order.first.Status != 'Delivered') || (Order.first.Status == 'Cancelled')
+    if (Order.first.status != 'Delivered') || (Order.first.status == 'Cancelled')
        pick_up_time + 4
      else 
       pick_up_time

@@ -1,6 +1,5 @@
 module ApplicationHelper
 
-  # Returns the full title on a per-page basis.
   def full_title(page_title = '')
     base_title = 'Assignment 2'
     if page_title.empty?
@@ -42,9 +41,4 @@ module ApplicationHelper
   def options_for_status
     ['Completed', 'Cancelled', 'Pending', 'Delivered']
   end
-
-  def load_current_order
-    @current_order ||= Current_Order.new(session[:order])
-  end
-
 end

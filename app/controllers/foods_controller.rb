@@ -1,5 +1,5 @@
 class FoodsController < ApplicationController
-  before_action :check_if_admin,
+  before_action :authorize_admin,
                 only: [:create, :destroy, :update, :edit_status]
 
   def index
@@ -22,7 +22,7 @@ class FoodsController < ApplicationController
       flash[:success] = "#{@food.name} has been added successfully."
       redirect_to dashboard_path
     else
-      flash[:error] = 'An error occured. Try adding #{@food.name} again.'
+      flash[:error] = "An error occured. Try adding #{@food.name} again."
     end
   end
 
@@ -65,9 +65,7 @@ class FoodsController < ApplicationController
 
   def food_params
     params.require(:food).permit(:id, :name, :description, :price,
-                                 :category_id, :food_image, :status,:prep_time,
-                                 sales: [:percentage, :price,
-                                         :status, :js])
+                                 :category_id, :food_image, :status,:prep_time)
   end
 
   def upload_image
@@ -76,7 +74,7 @@ class FoodsController < ApplicationController
     if image && image.size < 1.megabytes
       @upload = {}
       @upload[:food_image] = Cloudinary::Uploader.upload(image)
-      @food_image_url = @upload[:food_image]["url"]
+      @food_image_url = @upload[:food_image]['url']
       @food[:food_image_file_name] = @food_image_url
     else
       flash[:warning] = 'File size must be between 0 and 1 megabytes'
@@ -86,17 +84,8 @@ class FoodsController < ApplicationController
 
   def save_food
     @food[:food_image_file_name] = @food_image_url
-    if food_params[:sales][:js]
-      food = food_params[:sales]
-      food_status = (food['status'] == 'true') ? true : false
-      @food.update(sales: { price: food['price'].to_f,
-                            percentage: food['percentage'].to_f,
-                            status: food_status })
-      render json: { success: true }
-    else
-      @food.update(food_params)
-      flash[:success] = "#{@food.name} has been updated successfully."
-      redirect_to dashboard_path
-    end
+    @food.update(food_params)
+    flash[:success] = "#{@food.name} has been updated successfully."
+    redirect_to dashboard_path
   end
 end

@@ -14,8 +14,6 @@
             Email: #{@user.email}
         .card-action
           = link_to 'Edit Profile', edit_user_path(@user.id)
-          / </div>
-          / <div class='card-action'>
           = link_to 'View Orders', :args => { :show_all => true , :title => 'All Orders'}
     .col.s8
       %h4.order_header= @title

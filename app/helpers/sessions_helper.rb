@@ -6,7 +6,7 @@ module SessionsHelper
 
   def admin?
     if logged_in?
-     current_user.role == 'admin'
+      current_user.role == 'admin'
     end
   end
 
@@ -23,7 +23,7 @@ module SessionsHelper
     @current_user = nil
   end
 
-  def check_if_admin
+  def authorize_admin
     if admin?
       true
     else 

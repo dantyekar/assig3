@@ -18,8 +18,7 @@ class CartsController < ApplicationController
   end
   
   def destroy
-    food_id = params[:id]
-    @cart.cart_data.delete(food_id)
+    @cart.cart_data.delete(params[:id])
     redirect_to carts_path
   end
 
@@ -27,7 +26,7 @@ class CartsController < ApplicationController
     unless food.status == 'available'
       @ordered_foods.delete(food_id)
     else
-      price =  food.sales[:status] ? food.sales[:price] : food.price
+      price = food.price
       @total += (price * qty)
     end
   end
@@ -40,7 +39,7 @@ private
 
   def add_extra_time(pick_up_time)
     unless Order.first.nil?
-      if (Order.first.Status != 'Delivered')
+      if (Order.first.status != 'Delivered')
         pick_up_time + 4
       else 
         pick_up_time

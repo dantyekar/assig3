@@ -2,8 +2,8 @@
   = render 'layouts/topHeader'
 = render 'layouts/flash_messages'
 %h4.text-center Create new food
-.container.text-center
-  = form_for @food, :html => { :multipart => true, :class => 'col s12' } do |f|
+.container.text-center.col-sm-12
+  = form_for @food, :html => { :multipart => true} do |f|
     .row
       .input-field.col.s12
         = f.text_field :name, :class => 'validate'

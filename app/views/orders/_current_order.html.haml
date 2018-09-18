@@ -10,20 +10,13 @@
   %tbody
     - @current_order.sub_total = 0
     - @current_order.ordered_items.each do |index, details|
-      - if details['food']['sales']['status']
-        - @item_total_price = details['food']['sales']['price'] * details['qty']
-        - @current_order.sub_total += details['food']['sales']['price'] * details['qty']
-      - else
-        - @item_total_price = details['food']['price'] * details['qty']
-        - @current_order.sub_total += details['food']['price'] * details['qty']
+      - @item_total_price = details['food']['price'] * details['qty']
+      - @current_order.sub_total += details['food']['price'] * details['qty']
       %tr
         %td= index
         %td= details['food']['name']
         %td= details['food']['description']
-        - if details['food']['sales']['status']
-          %td= details['food']['sales']['price']
-        - else
-          %td= details['food']['price']
+        %td= details['food']['price']
         %td= details['qty']
         %td
           $#{@item_total_price}

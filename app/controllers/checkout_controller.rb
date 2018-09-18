@@ -9,7 +9,7 @@ class CheckoutController < ApplicationController
   end
 
   def create
-    if order_params[:status].downcase === 'pending' || order_params[:status].downcase === 'completed'
+    if order_params[:payment_status].downcase === 'pending' || order_params[:status].downcase === 'completed'
       @current_order.update_order(session[:order], order_params)
       if @current_order.save_order(@current_user)
         session[:order] = {}
@@ -26,7 +26,7 @@ class CheckoutController < ApplicationController
   private
 
   def order_params
-    { invoice: params[:invoice], status: params[:payment_status], transaction_id: params[:txn_id] }
+    params.permit(:invoice, :payment_status, :txn_id)
   end
 
 end

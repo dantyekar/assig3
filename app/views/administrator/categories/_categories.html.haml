@@ -1,0 +1,22 @@
+.container.text-center
+  %h2 All Categories
+.container
+  .header
+    .row
+  .body
+    %table.table.table-striped
+      %thead
+        %tr
+          %th{ "data-field" => "id" } Name
+          %th{ "data-field" => "name" } Description
+      %tbody
+        - @categories.each do |category|
+          %a{ :href => "/>" }
+            %tr
+              %td= link_to category.title, edit_category_path(category.id)
+              %td= category.description
+  .footer
+    .row
+      %a.btn-danger{ :href => '/categories/new' }
+        Add Category
+        %i.fas.fa-plus-circle

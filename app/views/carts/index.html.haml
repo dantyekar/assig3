@@ -30,18 +30,10 @@
               %td.food-prep{ 'data-message' => "#{details[:food]['prep_time']}", id: "food_prep_#{food_id}" }
                 = details[:prep_time]
                 mins
-              - if details[:food]['sales'][:status]
-                %td{:id => "food_unit_price_#{food_id}"}
-                  = details[:food]['sales'][:price]
-                  $
-                %td
-                  $
-                  %span.line-total{ 'data-message' => "#{details[:food]['sales'][:price]}", id: "food_sub_total_#{details[:food][:id]}" }= details[:food]['sales'][:price].to_i * details[:qty].to_i
-              - else
-                %td{ id: "food_unit_price_#{food_id}" }= details[:food]['price']
-                %td
-                  $
-                  %span.line-total{ 'data-message' => "#{details[:food]['price']}", id: "food_sub_total_#{details[:food][:id]}" }= details[:food]['price'].to_i * details[:qty].to_i
+              %td{ id: "food_unit_price_#{food_id}" }= details[:food]['price']
+              %td
+                $
+                %span.line-total{ 'data-message' => "#{details[:food]['price']}", id: "food_sub_total_#{details[:food][:id]}" }= details[:food]['price'].to_i * details[:qty].to_i
               %td
                 = button_to cart_item_delete_path(details[:food][:id]), :class => 'clear-button', method: :delete  do
                   %i.material-icons clear

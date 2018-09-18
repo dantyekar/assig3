@@ -7,7 +7,7 @@ class CartItemsController < ApplicationController
 
 	def destroy
 		@cart.destroy
-		session.delete(:cart)
+    session.delete(:cart)
 	end
 
 	def delete

@@ -1,0 +1,23 @@
+.container.text-center
+  %h2 All Users
+.container
+  %table.table-striped
+    %thead
+      %tr
+        %th
+        %th.text-center Firstname
+        %th.text-center Lastname
+        %th.text-center Email
+        %th.text-center Date joined
+        %th
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td= image_tag user.avatar.url(:large), alt: 'user'
+          %td= link_to "#{user.first_name}" , user_path(user.id)
+          %td= link_to "#{user.last_name}" , user_path(user.id)
+          %td= user.email
+          %td= user.created_at.strftime("%Y - %e - %d")
+          %td
+            = button_to user_path(user.id), :class => "clear-button", method: :delete, data: { confirm: 'You sure?' } do
+              %i.material-icons clear

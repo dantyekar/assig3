@@ -16,7 +16,7 @@ class UserMailer < ApplicationMailer
 
   def status_email(order)
     @order = order
-    @status = @order.Status
+    @status = @order.status
     @user = User.find(@order.user_id)
     mail( to: @user.email, subject: "Your order:#{@order.id} is now #{@status}" )
   end
