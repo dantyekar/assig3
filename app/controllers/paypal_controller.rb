@@ -1,4 +1,4 @@
-class PaypalController < ApplicationController
+class PaypalController
 
   def paypal_url(current_user, return_url)
     @user = current_user
