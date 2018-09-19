@@ -2,7 +2,7 @@ class AdministratorController < ApplicationController
   before_action :authorize_admin, only: [:show, :update]
 
   def update
-    @title = 'orders'
+    @title = 'Orders'
     @orders = Order.all.paginate(page: params[:page], per_page: 10)
     @status = params['order']['status']
     @order_id = params[:order_id]

@@ -10,15 +10,13 @@ class UserMailer < ApplicationMailer
   def order_email(user, items)
     @current_order = JSON.parse(items)
     @user = user
-    @order = @user.orders.last.id
-    mail( to: @user.email, subject: "Your order:#{@order} is being processed" )
+    mail( to: @user.email, subject: "Your order:#{@user.orders.last.id} is being processed" )
   end
 
   def status_email(order)
     @order = order
-    @status = @order.status
     @user = User.find(@order.user_id)
-    mail( to: @user.email, subject: "Your order:#{@order.id} is now #{@status}" )
+    mail( to: @user.email, subject: "Your order:#{@order.id} is now #{@order.status}" )
   end
 
 end

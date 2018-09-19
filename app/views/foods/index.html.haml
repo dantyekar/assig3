@@ -35,10 +35,7 @@
                 %i.fas.fa-shopping-cart
                 = link_to "                                                                                           |
                   #{this_food_in_cart(food)}", carts_path, class: 'cart left no_left_pad no-right-margin', id: 'cart' |
-              - if food.status == 'available'
-                = button_to 'Add to cart', cart_items_path(food_id: food.id)
-              - else
-                %p Out of stock
+              = button_to 'Add to cart', cart_items_path(food_id: food.id)
             .card-reveal
               %span.card-title.grey-text.text-darken-4
                 = food.name

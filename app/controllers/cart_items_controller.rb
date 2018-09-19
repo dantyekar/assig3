@@ -16,8 +16,8 @@ class CartItemsController < ApplicationController
 
   def update
     cart = cart_params
-    food_id = cart[:food_id]
-    quantity = cart[:quantity]
+    food_id = cart_params[:food_id]
+    quantity = cart_params[:quantity]
     session[:cart][food_id] = quantity.to_i
     session[:order]['items'][food_id]['qty'] = quantity.to_i
     session[:order]['details'] = order_params
@@ -31,6 +31,6 @@ class CartItemsController < ApplicationController
   end
 
   def order_params
-    params.require(:order_details).permit(:sub_total, :total, :pickup_time)
+    params.require(:order_details).permit(:sub_total, :total)
   end
 end

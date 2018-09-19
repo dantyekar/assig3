@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :cart
+  before_action :set_cart
   before_action :current_user
   before_action :load_current_order
 
@@ -7,13 +7,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
 
-  def cart
+  def set_cart
     @cart ||= Cart.new(session[:cart])
   end
 
   def load_current_order
     session[:order] ||= {}
-    @current_order ||= Current_Order.new(session[:order])
+    @current_order ||= CurrentOrder.new(session[:order])
   end
 
 end

@@ -1,6 +1,6 @@
 class FoodsController < ApplicationController
   before_action :authorize_admin,
-                only: [:create, :destroy, :update, :edit_status]
+                only: [:create, :destroy, :update]
 
   def index
     @foods = Food.all.order(created_at: :asc)
@@ -51,21 +51,11 @@ class FoodsController < ApplicationController
     end
   end
 
-  def edit_status
-    food = Food.find(food_params[:id].to_i)
-    unless food.nil?
-      status = food_params[:status] == 'true' ? 'available' : 'not available'
-      food.status = status
-      food.save
-      render json: food
-    end
-  end
-
   private
 
   def food_params
     params.require(:food).permit(:id, :name, :description, :price,
-                                 :category_id, :food_image, :status,:prep_time)
+                                 :category_id, :food_image)
   end
 
   def upload_image

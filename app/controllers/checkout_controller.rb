@@ -23,10 +23,11 @@ class CheckoutController < ApplicationController
       end
     end
   end
+
   private
 
-  def order_params
-    params.permit(:invoice, :payment_status, :txn_id)
-  end
+    def order_params
+      params.permit(:invoice, :payment_status, :txn_id)
+    end
 
 end

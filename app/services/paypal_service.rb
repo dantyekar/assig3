@@ -1,18 +1,15 @@
-class PaypalController
+class PaypalService
 
-  def paypal_url(current_user, return_url)
+  def self.paypal_url(current_user, return_url, ordered_items)
     @user = current_user
+    @ordered_items = ordered_items
     values = {
       business: 'bob@bob.co',
       cmd: '_cart',
       upload: 1,
       rm: 2,
       return: return_url,
-      notify_url: @user.email,
-      "amount_#{@ordered_items.length+1}" => vat,
-      "item_name_#{@ordered_items.length+1}" => 'VAT',
-      "amount_#{@ordered_items.length+2}" => @delivery_cost,
-      "item_name_#{@ordered_items.length+2}" => 'Delivery cost'
+      notify_url: @user.email
     }
     counter = 1
     @ordered_items.each do |index, details|

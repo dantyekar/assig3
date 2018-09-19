@@ -28,35 +28,9 @@
     %td
     %td
       $#{@current_order.sub_total}
-  %tr
-    - @current_order.vat
-    %td
-    %td
-    %td
-    %td VAT
-    %td
-    %td
-      $#{@current_order.vat}
-  %tr
-    %td
-    %td
-    %td
-    %td Delivery cost
-    %td
-    %td
-      $#{@current_order.delivery_cost}
-  %tr
-    %td
-    %td
-    %td
-    %td Delivery time
-    %td
-    %td
-      = @current_order.pickup_time
-      minutes
   %tfoot
     %tr.tablFoot
-      - @current_order.total = @current_order.sub_total + @current_order.delivery_cost + @current_order.vat
+      - @current_order.total = @current_order.sub_total
       %td
       %td
       %td

@@ -9,17 +9,3 @@
       %p= @food.price
     .container.col-xs12-md6-xl6
       = image_tag @food.food_image.url
-  %h5 Comments
-  .comments
-    - @food.comments.each do |comment|
-      .divider
-      .section
-        %h6= "#{comment.user.first_name} #{comment.user.last_name} says"
-        %p= comment.comment
-    - if logged_in?
-      %h5 Add a comments
-      = form_for 'comment', url: {controller: 'comments', action: 'create', food_id: @food.id, user_id: @current_user.id, method: :post} do |f|
-        .divider
-        .section
-          %h6= f.text_field :comment, id: 'comment'
-          %p= button_to 'Add comment', create_food_comment_path(@food), 'data-foodid' => "#{@food.id}", 'data-userid' => "#{@current_user.id}", id: 'add_comment'

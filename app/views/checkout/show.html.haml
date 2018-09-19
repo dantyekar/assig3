@@ -10,4 +10,4 @@
       = render 'orders/current_order'
       %div
         = link_to 'Back to my cart', carts_path, :class => 'btn btn-success in-line left'
-        = button_to 'Make payment', @current_order.paypal_url(@current_user, payment_completed_url), :class => 'btn btn-success in-line left'
+        = button_to 'Make payment', PaypalService.paypal_url(@current_user, payment_completed_url, @current_order.ordered_items), :class => 'btn btn-success in-line left'
