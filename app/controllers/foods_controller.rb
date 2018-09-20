@@ -12,18 +12,14 @@ class FoodsController < ApplicationController
 
   def edit
     @food = Food.find(params[:id])
-    render template: 'foods/new'
   end
 
   def create
     @food = {}
-    if upload_image
-      @food = Food.create(food_params)
-      flash[:success] = "#{@food.name} has been added successfully."
-      redirect_to dashboard_path
-    else
-      flash[:error] = "An error occured. Try adding #{@food.name} again."
-    end
+    upload_image
+    @food = Food.create(food_params)
+    flash[:success] = "#{@food.name} has been added successfully."
+    redirect_to dashboard_path
   end
 
   def show
@@ -54,20 +50,21 @@ class FoodsController < ApplicationController
   private
 
   def food_params
-    params.require(:food).permit(:id, :name, :description, :price,
-                                 :category_id, :food_image)
+    params.require(:food).permit(:id, :name, :description, :price, :category_id, :food_image)
   end
 
   def upload_image
     image = food_params[:food_image]
     @food_image_url = false
-    if image && image.size < 1.megabytes
-      @upload = {}
-      @upload[:food_image] = Cloudinary::Uploader.upload(image)
-      @food_image_url = @upload[:food_image]['url']
-      @food[:food_image_file_name] = @food_image_url
-    else
-      flash[:warning] = 'File size must be between 0 and 1 megabytes'
+    if image && image.size > 10.megabytes
+      flash[:warning] = 'File size must be between 0 and 10 megabytes'
+    else 
+      if image
+        @upload = {}
+        @upload[:food_image] = Cloudinary::Uploader.upload(image)
+        @food_image_url = @upload[:food_image]['url']
+        @food[:food_image_file_name] = @food_image_url
+      end
     end
     @food_image_url
   end

@@ -15,7 +15,6 @@ class CartItemsController < ApplicationController
   end
 
   def update
-    cart = cart_params
     food_id = cart_params[:food_id]
     quantity = cart_params[:quantity]
     session[:cart][food_id] = quantity.to_i

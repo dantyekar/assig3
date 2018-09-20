@@ -3,6 +3,6 @@ class Food < ActiveRecord::Base
   has_many :order_items
   has_many :orders, through: :order_items
   
-  has_attached_file :food_image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "nigerian-jollof-rice.jpg"
+  has_attached_file :food_image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "default_food.jpg"
   validates_attachment_content_type :food_image, :content_type => /\Aimage\/.*\Z/
 end

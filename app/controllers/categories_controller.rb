@@ -1,7 +1,6 @@
 class CategoriesController < ApplicationController
   def index
     @categories = Category.all
-    render '/app/views/layouts/_category.html.haml'
   end
 
   def new
@@ -12,7 +11,7 @@ class CategoriesController < ApplicationController
     if admin?
       @category = Category.create(category_params)
       if @category
-        flash[:success] = 'New category Created'
+        flash[:success] = 'New category created'
         redirect_to dashboard_path
       else
         flash[:failure] = 'Error in creating category'
@@ -22,12 +21,10 @@ class CategoriesController < ApplicationController
 
   def edit
     @category = Category.find(params[:id])
-    render template: 'categories/new'
   end
 
   def show
     @category = Category.find(params[:id])
-    render template: 'foods/index.html.haml'
   end
 
   def category_params

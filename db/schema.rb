@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_19_151817) do
+ActiveRecord::Schema.define(version: 2018_10_13_100054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,30 +22,17 @@ ActiveRecord::Schema.define(version: 2018_10_19_151817) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.string "comment"
-    t.bigint "food_id"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["food_id"], name: "index_comments_on_food_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
-  end
-
   create_table "foods", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "status", default: "available"
     t.string "food_image_file_name"
     t.string "food_image_content_type"
     t.bigint "food_image_file_size"
     t.datetime "food_image_updated_at"
     t.bigint "category_id"
-    t.integer "prep_time", default: 12
-    t.text "sales"
     t.index ["category_id"], name: "index_foods_on_category_id"
   end
 
@@ -58,16 +45,13 @@ ActiveRecord::Schema.define(version: 2018_10_19_151817) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "Status", default: "Pending"
+    t.string "status", default: "Pending"
     t.integer "total"
-    t.integer "vat"
-    t.integer "delivery_cost"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "transaction_id"
     t.string "invoice"
-    t.integer "pickup_time", default: 0
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 

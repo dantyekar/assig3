@@ -1,7 +1,7 @@
 .header1stuff
   = render 'layouts/topHeader'
 = render 'layouts/flash_messages'
-%h4.text-center Create new food
+%h4.text-center Update food
 .container.text-center.col-sm-12
   = form_for @food, :html => { :multipart => true} do |f|
     .row
@@ -26,4 +26,4 @@
     .row
       .col-sm-12
         = f.file_field :food_image
-    = f.submit 'Add food', :class => 'btn btn-info'
+    = f.submit 'Update food', :class => 'btn btn-info'
