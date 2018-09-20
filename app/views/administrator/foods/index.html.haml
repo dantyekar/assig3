@@ -2,15 +2,15 @@
   %h2 All foods
 .container.text-center
   .body
-    %table.table-striped
+    %table.table-striped.col-sm-12
       %thead
         %tr
-          %th{ "data-field" => "id" } Name
-          %th{ "data-field" => "name" } Description
-          %th{ "data-field" => "price" } Item Price
-          %th{ "data-field" => "price" } Category
-          %th{ "data-field" => "price" } Updated
-          %th{ "data-field" => "price" }
+          %th Name
+          %th Description
+          %th Item Price
+          %th Category
+          %th Updated
+          %th
       %tbody
         - @foods.each do |food|
           %a{ :href => "/>" }

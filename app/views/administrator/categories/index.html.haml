@@ -4,11 +4,11 @@
   .header
     .row
   .body
-    %table.table.table-striped
+    %table.table.table-striped.col-sm-12.text-center
       %thead
         %tr
-          %th{ "data-field" => "id" } Name
-          %th{ "data-field" => "name" } Description
+          %th Name
+          %th Description
       %tbody
         - @categories.each do |category|
           %a{ :href => "/>" }

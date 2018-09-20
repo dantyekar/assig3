@@ -4,14 +4,14 @@
   = will_paginate @orders
   .container.text-center
     .body
-      %table.table-striped
+      %table.table-striped.col-sm-12
         %thead
           %tr
-            %th.col-md-2{ "data-field" => "name" } Owner
-            %th.col-md-1{ "data-field" => "price" } Total
-            %th.col-md-2{ "data-field" => "price" } Time Ordered
-            %th.col-md-2{ "data-field" => "price" } Status
-            %th.col-md-1{ "data-field" => "price" }
+            %th.col-sm-2 Owner
+            %th.col-sm-2 Total
+            %th.col-sm-2 Time Ordered
+            %th.col-sm-3 Status
+            %th.col-sm-3
           %tbody
             - @orders.each do |order|
               %tr
@@ -19,7 +19,7 @@
                 %td.col-md-1
                   $#{order.total || 0.0}
                 %td.col-md-2= time_ago_in_words(order.created_at, include_seconds: true) + ' ago'
-                = form_for order, url: { controller: 'administrator/base', action: 'update', order_id: order.id, status: order.status }, method: :patch  do |f|
+                = form_for order, url: { controller: 'administrator/orders', action: 'update', order_id: order.id, status: order.status }, method: :patch  do |f|
                   %td.col-md-1= f.select :status, options_for_status, selected: order.status
                   %td.col-md-1= f.submit 'Confirm'
 

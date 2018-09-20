@@ -1,0 +1,27 @@
+!!!
+%html
+  %head
+    %meta{:content => 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type'}/
+    %title= full_title(yield(:title))
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', |
+      'data-turbolinks-track': 'reload'                   |
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'https://use.fontawesome.com/releases/v5.1.1/css/all.css',        |
+      integrity: 'sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ', |
+      crossorigin: 'anonymous'                                                              |
+    /[if lt IE 9]
+      <script src='//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js'>
+      </script>
+  %body
+    %div
+      .background.default
+        %main
+        .header1stuff
+          = render 'layouts/topHeader'
+          = render 'layouts/flash_messages'
+        = render 'layouts/dashboard_menu'
+        = yield
+        / End of main
+        = render 'layouts/footer'
+      / end of container main
