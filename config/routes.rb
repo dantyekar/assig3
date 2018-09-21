@@ -17,6 +17,12 @@ Rails.application.routes.draw do
     resources :orders, :foods, :users, :categories
   end
   
+  namespace :api do 
+    namespace :v1 do 
+      resources :foods
+    end 
+  end 
+  
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
