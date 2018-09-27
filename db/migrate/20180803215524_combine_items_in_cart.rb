@@ -1,17 +1,11 @@
 class CombineItemsInCart < ActiveRecord::Migration[5.2]
   def up
-    # replace multiple items for a single product in a cart with a
-    # single item
     Cart.all.each do |cart|
-      # count the number of each product in the cart
       sums = cart.order_items.group(:food_id).sum(:quantity)
 
       sums.each do |food_id, quantity|
         if quantity > 1
-          # remove individual items
           cart.order_items.where(food_id: food_id).delete_all
-
-          # replace with a single item
           item = cart.order_items.build(food_id: food_id)
           item.quantity = quantity
           item.save!
@@ -21,9 +15,7 @@ class CombineItemsInCart < ActiveRecord::Migration[5.2]
   end
 
   def down
-    # split items with quantity > 1 into multiple items
     OrderItem.where("quantity > 1").each do |order_item|
-      # add individual items
       order_item.quantity.times do
         OrderItem.create(
           cart_id: order_item.cart_id,
@@ -31,8 +23,6 @@ class CombineItemsInCart < ActiveRecord::Migration[5.2]
           quantity: 1
         )
       end
-
-      # remove original item
       order_item.destroy
     end
   end
