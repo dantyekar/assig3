@@ -1,0 +1,29 @@
+.header-1-wrap
+  = render 'layouts/top_header'
+= render 'layouts/flash_messages'
+%h4.text-center Update food
+.container.text-center.col-sm-12
+  = form_for @food, :html => { :multipart => true} do |f|
+    .row
+      .input-field.col-sm-12
+        = f.text_field :name, :class => 'validate'
+        = f.label :name
+        .error= @food.errors.messages[:name][0]
+    .row
+      .input-field.col-sm-12
+        = f.text_field :description, :class => 'validate'
+        = f.label :description, :class => 'active', 'data-error' => "#{@food.errors.messages['description']}"
+        .error= @food.errors.messages[:description][0]
+    .row
+      .input-field.col-sm-12
+        = f.text_field :price, :class => 'validate'
+        = f.label :price
+        .error= @food.errors.messages[:price][0]
+    .row
+      .input-field.col-sm-12
+        = f.collection_select(:category_id, Category.all, :id, :title, {}, { :class => 'select_box', :style => 'display:block;' })
+        .error= @food.errors.messages[:category_id][0]
+    .row
+      .col-sm-12
+        = f.file_field :food_image
+    = f.submit 'Update food', :class => 'btn btn-info'

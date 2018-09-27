@@ -1,0 +1,37 @@
+%nav.navbar.bg-light.sorting-nav
+  .mr-auto
+    .dropdown
+      %button.dropbtn
+        Category
+        %i.fa.fa-angle-down
+      .dropdown-content
+        - @categories = @categories.nil? ? Category.all : @categories
+        - @categories.each do |category|
+          %a{:href => category_path(category)}= category.title
+    .dropdown
+      %button.dropbtn
+        Sorting
+        %i.fa.fa-angle-down
+      .dropdown-content
+        %a{ :href => '#' } Link 1
+    .dropdown
+      %button.dropbtn
+        Vegetarian
+        %i.fa.fa-angle-down
+      .dropdown-content
+        %a{ :href => '#' } Link 1
+  .ml-auto{ :style => 'align-content: center;' }
+    .score
+      Price:
+    #slider-value-1.score
+      2
+    .score
+      .slidecontainer
+        .range-slider
+          /
+            <span>Price Range</span>
+            <span class='rangeValues'></span><br><br>
+          %input{ :max => '100', :min => '1', :step => '1', :type => 'range', :value => '1' }/
+          %input{ :max => '100', :min => '1', :step => '1', :type => 'range', :value => '100' }/
+    #slider-value-2.score
+      2

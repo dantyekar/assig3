@@ -1,16 +1,18 @@
 F1 = Food.create(name: "Spagetti bolognese",
                  description: "Yummy spagetti to increase your life span!",
-                 price: 15,
-                 status: "available")
+                 price: 15)
                  
 F2 = Food.create(name: "Steaks",
                  description: "Nice mix of african special barbecue sauce",
-                 price: 7.5,
-                 status: "available")
+                 price: 7.5)
 
 F3 = Food.create(name: "Lobsters",
                  description: "Crispy sea food delicacy to make your holiday",
                  price: 12)
+
+F4 = Food.create(name: "Akara",
+                 description: "Home made akara",
+                 price: 5)
 
 C1 = Category.create(title: "Entree",
                      description: "Home made food ready to eat")
@@ -37,10 +39,10 @@ A1 = User.create(first_name: "admin",
                  password_confirmation: "parola1234",
                  role: "admin")
 
-O1 = Order.create(Status: "Completed", transaction_id: "123ss1", user_id: U1.id)
-O2 = Order.create(Status: "Cancelled", transaction_id: "123ss2", user_id: U1.id)
-O3 = Order.create(Status: "Processing", transaction_id: "123ss3", user_id: U1.id)
-O4 = Order.create(Status: "Processing", transaction_id: "123ss4", user_id: U1.id)
+O1 = Order.create(payment_status: "Completed", txn_id: "123ss1", user_id: U1.id)
+O2 = Order.create(payment_status: "Cancelled", txn_id: "123ss2", user_id: U1.id)
+O3 = Order.create(payment_status: "Processing", txn_id: "123ss3", user_id: U1.id)
+O4 = Order.create(payment_status: "Processing", txn_id: "123ss4", user_id: U1.id)
 
 Order_Item1 = OrderItem.create(quantity: 3, food_id: F1.id, order_id: 1)
 Order_Item2 = OrderItem.create(quantity: 2, food_id: F2.id, order_id: 1)
@@ -57,7 +59,4 @@ Order_Item11 = OrderItem.create(quantity: 5, food_id: F3.id, order_id: 4)
 C1.foods << F1
 C1.foods << F2
 C2.foods << F3
-
-Comment1 = Comment.create(comment: "Best food ever", food_id: F1.id, user_id: U1.id)
-Comment2 = Comment.create(comment: "I love it!!", food_id: F1.id, user_id: U2.id)
 

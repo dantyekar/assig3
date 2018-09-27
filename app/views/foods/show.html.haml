@@ -1,0 +1,11 @@
+.header-1-wrap
+  = render 'layouts/top_header'
+= render 'layouts/flash_messages'
+.container
+  .row.text-center
+    .col.s12.m6.l6.flow-text
+      %h3= @food.name
+      %p= @food.description
+      %p= @food.price
+    .container.col-xs12-md6-xl6
+      = image_tag @food.food_image.url

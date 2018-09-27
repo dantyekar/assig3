@@ -1,0 +1,42 @@
+- provide(:title, 'Service')
+.service-header
+  = render 'layouts/top_header'
+  .jumbotron.text-center
+    %div
+      %h1.title.texty Menu
+      =image_tag 'https://forums.autodesk.com/autodesk/attachments/autodesk/706/80968/2/0001.png', style: 'filter:invert(100%)', width: '50px'
+      =image_tag 'https://forums.autodesk.com/autodesk/attachments/autodesk/706/80968/2/0001.png', style: 'filter:invert(100%)', width: '50px'
+      %i.fas.fa-utensils
+      =image_tag 'https://forums.autodesk.com/autodesk/attachments/autodesk/706/80968/2/0001.png', style: 'filter:invert(100%)', width: '50px'
+      =image_tag 'https://forums.autodesk.com/autodesk/attachments/autodesk/706/80968/2/0001.png', style: 'filter:invert(100%)', width: '50px'
+      %br/
+      %p.description.texty Our menu contains a range of all sorts of foods that might be just right for you.
+= render 'layouts/sorting_nav'
+
+= render 'layouts/flash_messages'
+
+.row
+  .col-xs-9
+    .h3= (@category.present?) ? @category.title : 'All cuisines'
+    .row
+      - @foods = (@category.present?) ? @category.foods : @foods
+      - @foods.each do |food|
+        .col-xs12-md6-xl4
+          .card
+            .card-image
+              %span.activator
+              = link_to(food) do
+                = image_tag((food.food_image.url || 'default_food.jpg'), width: '100%', height: 'auto', style: 'max-width:100%', class: 'image-thumb', alt: 'food')
+                %span.card-title= food.name
+            .card-action
+              %span.price-tag
+                $#{food.price}
+              .right
+                %i.fas.fa-shopping-cart
+                = link_to "                                                                                           |
+                  #{this_food_in_cart(food)}", carts_path, class: 'cart left no_left_pad no-right-margin', id: 'cart' |
+              = button_to 'Add to cart', order_items_path(food_id: food)
+            .card-reveal
+              %span.card-title.grey-text.text-darken-4
+                = food.name
+              %p= food.description

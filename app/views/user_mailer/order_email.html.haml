@@ -1,0 +1,33 @@
+.mailer
+  .full-height.scroll-bar
+    %table.responsive-table
+      %thead.table-head
+        %tr
+          %th{ 'data-field' => 'id' } Food id#
+          %th{ 'data-field' => 'name' } Name
+          %th{ 'data-field' => 'description' } Description
+          %th{ 'data-field' => 'price' } Price
+          %th{ 'data-field' => 'quantity' } Quantity
+          %th{ 'data-field' => 'line total' } Line Total
+      %tbody
+        - @cart.order_items.each do |item|
+          - food_id = item.food.id
+          %tr
+            %td= item.food.id
+            %td= item.food.name
+            %td= item.food.description
+            %td= item.food.price
+            %td= item.quantity
+            %td
+              $#{item.total_price}
+      %tfoot.table-foot
+        %tr
+          %td
+          %td
+          %td
+          %td Total
+          %td
+          %td#total
+            $#{@cart.total_price}
+  %p
+    Thanks for choosing #{link_to 'Eureka Caffee', 'https://peaceful-garden-12705.herokuapp.com/'}

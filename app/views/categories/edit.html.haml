@@ -1,0 +1,16 @@
+.header-1-wrap
+  = render 'layouts/top_header'
+= render 'layouts/flash_messages'
+  
+.container.text-center
+  %h4 Create new food category
+  = form_for @category, :html => { multipart: true, :class => 'col-sm-12' } do |f|
+    .input-field.col-xs-12
+      = f.label :title
+      = f.text_field :title, :class => 'validate'
+      .error= @category.errors.messages[:title][0]
+    .input-field.col-xs-12
+      = f.label :description, :class => 'active', 'data-error' => "#{@category.errors.messages['description']}"
+      = f.text_field :description, :class => 'validate'
+      .error= @category.errors.messages[:description][0]
+    = f.submit 'Save', :class => 'btn btn-info'

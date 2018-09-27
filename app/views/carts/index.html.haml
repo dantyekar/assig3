@@ -1,0 +1,44 @@
+= javascript_include_tag 'application', 'data-turbolinks-track' => false
+.header-1-wrap
+  = render 'layouts/top_header'
+= render 'layouts/flash_messages'
+.container
+  .pad-bottom
+    - if @cart.order_items.length == 0
+      %p.text-center Your cart is empty
+    - else
+      %table.table.table-striped
+        %thead.table-head
+          %tr
+            %th{ "data-field" => "id" } Food id#
+            %th{ "data-field" => "name" } Name
+            %th{ "data-field" => "description" } Description
+            %th{ "data-field" => "quantity" } Quantity
+            %th{ "data-field" => "price" } Price
+            %th{ "data-field" => "line total" } Line Total
+        %tbody
+          - @cart.order_items.each do |item|
+            - food_id = item.food.id
+            %tr
+              %td= item.food.id
+              %td{ id: "food_name_#{food_id}" }= item.food.name
+              %td{ id: "food_desc_#{food_id}" }= item.food.description
+              %td{ id: "food_qty_#{food_id}" }= item.quantity
+              %td{ id: "food_unit_price_#{food_id}" }= item.food.price
+              %td
+                $
+                %span.line-total= item.total_price
+              %td
+                = button_to order_item_path(item.id), :class => 'clear-button', method: :delete  do
+                  %i.material-icons clear
+        %tfoot.table-foot
+          %tr
+            %td
+            %td
+            %td
+            %td
+            %td
+            %td Subtotal
+            %td#total
+              $#{@cart.total_price}
+      = button_to 'Checkout', checkout_path, :class => 'btn btn-info'

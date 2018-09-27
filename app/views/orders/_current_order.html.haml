@@ -1,0 +1,27 @@
+%table.table.table-striped
+  %thead.table-head
+    %tr
+      %th{ 'data-field' => 'id' } No.
+      %th{ 'data-field' => 'name' } Name
+      %th{ 'data-field' => 'description' } Description
+      %th{ 'data-field' => 'price' } Price
+      %th{ 'data-field' => 'quantity' } Quantity
+      %th{ 'data-field' => 'line total' } Line Total
+  %tbody
+    - @cart.order_items.each do |order|
+      %tr
+        %td= order.food.id
+        %td= order.food.name
+        %td= order.food.description
+        %td= order.food.price
+        %td= order.quantity
+        %td
+          $#{order.total_price}
+  %tr.table-foot
+    %td
+    %td
+    %td
+    %td Subtotal
+    %td
+    %td
+      $#{@cart.total_price}

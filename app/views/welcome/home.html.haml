@@ -1,0 +1,100 @@
+- provide(:title, 'Home')
+.home-header
+  = render 'layouts/top_header'
+  .jumbotron.text-center
+    %div
+      %h1.title.texty Eureka Caffee
+      %br
+        %i.fas.fa-utensils
+        %br
+
+= render 'layouts/flash_messages'
+
+.jumbotron.text-center.bg-light
+  %p.description.texty We are here to offer you a journey through the food paradise. Sit back  enjoy!
+
+.parallax2
+
+.jumbotron.text-center.bg-light
+  %h2.description.texty Getting started!
+  %br
+  %br
+  %br
+  .row
+    .col-sm-8
+      %p.texty
+        My bologna has a first name, it's O-s-c-a-r. My bologna has a second name, it's M-e-y-e-r. Oh, I love to eat it every day, and if you ask me why, I'll say: 'cuz Oscar Meyer has a way with b-o-l-o-g-n-a. How's that?
+      %br
+      = link_to service_path do
+        %p.float-right.learnMore
+          %i.fas.fa-cookie-bite
+          Order here
+          %i.fas.fa-angle-right
+    .col-sm-4
+      = image_tag('pic1.jpg', class: 'home-images')
+              
+.parallax3
+
+.jumbotron.text-center.bg-light
+  %h2.description.texty Your daily life quotes
+  %br
+  %br
+  %br
+  .row
+    .col-sm-4
+      = image_tag('pic2.jpg', class: 'home-images')
+    .col-sm-8
+      %p.texty
+        Enter at your peril, past the vaulted door. Impossible things will happen that the world's never seen before. In Dexter's laboratory lives the smartest boy you've ever seen, but Dee Dee blows his experiments to Smithereens! There's gloom and doom when things go boom in Dexter's lab!
+      %br
+      = link_to about_path do
+        %p.float-right.learnMore
+          Getting started on life
+          %i.fas.fa-angle-right
+                        
+.parallax4
+                        
+.jumbotron.text-center.bg-light
+  %h2.description.texty Get creative!
+  %br
+  %br
+  .row
+    .col-sm-8
+      %p.texty
+        We're always looking for new ways to improve ourselves!
+        %br
+        If you're feeling like sharing your impressions, beliefs or any sort of feedback with us we make you the promise we'll make it count!
+        %br
+        %br
+        Share the love
+        %i.far.fa-heart
+        \!
+      = link_to blog_path do
+        %p.float-right.learnMore
+          Kill it with some
+          %i.fas.fa-fire
+          FIRE
+          %i.fas.fa-fire
+          feedback
+          %i.fas.fa-angle-right
+    .col-sm-4
+      = image_tag('pic3.jpg', class: 'home-images')
+                            
+.parallax
+                                  
+.jumbotron.text-center.bg-light
+  %h2.description.texty Meet the team behind the project!
+  %br
+  %br
+  %br
+  .row
+    .col-sm-4
+      = image_tag('pic4.jpg', class: 'home-images')
+    .col-sm-8
+      %p.texty
+        It seems today that all you see is violence in movies and sex on tv, but where are those good old-fashioned values on which we used to rely? Lucky there's a family guy, lucky there's a man who positively can do all the things that make us laugh and cry - he's our family guy!
+      %br
+      = link_to contacts_path do
+        %p.float-right.learnMore
+          Learn more 'bout us
+          %i.fas.fa-angle-right

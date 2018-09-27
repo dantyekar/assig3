@@ -1,0 +1,15 @@
+.header-1-wrap
+  = render 'layouts/top_header'
+= render 'layouts/flash_messages'
+.container
+  %h3 Log in
+  = form_for(:session, url: login_path, html: { class: 'login_form' }) do |f|
+    .row
+      .input-field.col.s6
+        = f.label :email
+        = f.text_field :email
+    .row
+      .input-field.col.s6
+        = f.label :password
+        = f.password_field :password
+    = f.submit 'Log in', class: 'btn btn-success'

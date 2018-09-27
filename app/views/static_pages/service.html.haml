@@ -1,0 +1,15 @@
+- provide(:title, 'Service')
+.service-header
+  = render 'layouts/top_header'
+  .jumbotron.text-center
+    %div
+      %h1.title.texty Menu
+      image_tag('lines.png')
+      image_tag('lines.png')
+      %i.fas.fa-utensils
+      image_tag('lines.png')
+      image_tag('lines.png')
+      %div
+      %p.description.texty Our menu contains a range of all sorts of foods that might be just right for you.
+= render 'layouts/flash_messages'
+/ insert html body here
