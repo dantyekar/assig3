@@ -1,6 +1,7 @@
 class PaymentsController < ApplicationController
+
   def create
-    if @current_order.save_order(@current_user)
+    if @order.save
       flash[:success] = 'Your order has been successfully placed.'
       redirect_to root_path
     else

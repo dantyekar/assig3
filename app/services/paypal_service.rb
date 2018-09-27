@@ -12,12 +12,12 @@ class PaypalService
       notify_url: @user.email
     }
     counter = 1
-    @ordered_items.each do |index, details|
+    @ordered_items.each do |order_item|
       values.merge!({
-        "amount_#{counter}" => details['food']['price'],
-        "item_name_#{counter}" => details['food']['name'],
+        "amount_#{counter}" => order_item.food.price,
+        "item_name_#{counter}" => order_item.food.name,
         "item_number_#{counter}" => counter,
-        "quantity_#{counter}" => details['qty']
+        "quantity_#{counter}" => order_item.quantity
       })
       counter += 1
     end

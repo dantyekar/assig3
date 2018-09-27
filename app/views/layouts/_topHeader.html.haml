@@ -34,7 +34,6 @@
         %li{ :class => "cart-holder #{cart_properties['status']}" }
           = link_to carts_path, class: 'cart left no_left_pad nav-link texty', id: 'cart'  do
             %i.fas.fa-shopping-cart
-            = cart_properties['items_count']
         - if current_user
           %li.nav-item.dropdown
             %a.dropdown-toggle.texty.nav-link{ 'data-toggle' => 'dropdown', :href => '#' }

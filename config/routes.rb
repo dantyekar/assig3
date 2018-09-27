@@ -4,10 +4,14 @@ Rails.application.routes.draw do
   get  '/contacts', to: 'static_pages#contacts'
   get  '/service',   to: 'foods#index'
   get  '/blog', to: 'static_pages#blog'
+  get '/order_items', to: 'carts#index'
 
   root 'welcome#home'
 
-  resources :foods, :categories, :cart_items, :carts
+  resources :categories
+  resources :foods
+  resources :order_items
+  resources :carts
 
   resources :users do
     resources :orders
@@ -28,12 +32,11 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
 
   post 'checkout' => 'checkout#show', as: :checkout
-  get '/payment/processed' => 'checkout#create', as: :get_payment_completed
-  post 'payment' => 'checkout#create', as: :payment
-  post '/payment/processed' => 'checkout#create', as: :payment_completed
+  get '/payment/processed' => 'order#create', as: :get_payment_completed
+  post 'payment' => 'order#create', as: :payment
+  post '/payment/processed' => 'order#create', as: :payment_completed
 
   post 'carts/checkout' => 'carts#checkout', as: :cart_checkout
-  delete 'carts/:item_id/', to: 'carts#destroy', as: :cart_item_delete
 
   get 'administrator' => 'administrator#show', as: :dashboard
 

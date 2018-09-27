@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authorize_admin, only: [:destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -7,14 +8,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @image = user_params[:avatar]
-    uploader_checker(@image) if @image
+    upload_image(user_params[:avatar])
     @user[:avatar_file_name] = @avatar_url
     if @user.save
       log_in @user
       flash[:success] = "Welcome #{user_params[:first_name]} to Eureka Caffee!"
-      @user1 = User.find(@user.id)
-      UserMailer.welcome_email(@user1).deliver_now      
+      UserMailer.welcome_email(@user).deliver_now      
       redirect_to root_path
     else
       flash[:error] = 'One or more required fields are missing'
@@ -23,10 +22,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:id])
     args = args_params || {}
     if @user
-      if !args.nil?
+      if args.present?
         @orders = @user.orders
         @title = args[:title] || 'Profile'
       else
@@ -40,11 +38,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = 'Profile Successfully Updated'
       redirect_to @user
@@ -60,9 +56,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    user = User.find(params[:id])
-    if user
-      user.destroy
+    if @user
+      @user.destroy
       flash[:success] = "#{user.first_name} has been deleted."
       redirect_to dashboard_path
     else
@@ -72,19 +67,15 @@ class UsersController < ApplicationController
 
   private
 
-  def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :avatar)
-  end
-
-  def args_params
-    args = params.require(:args).permit(:show_all, :title) if params.has_key? 'args'
-  end
-
-  def uploader_checker(image)
-    if image.size < 10.megabytes
-      upload_image(image)
-    else
-      flash[:warning] = 'File size must be between 0 and 10 megabytes'
+    def set_user
+      @user = User.find(params[:id])
     end
-  end
+
+    def user_params
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :avatar)
+    end
+
+    def args_params
+      args = params.require(:args).permit(:show_all, :title) if params.has_key? 'args'
+    end
 end

@@ -14,7 +14,7 @@
               %tr
                 %td.col-md-2 Order: #{order.id}
                 %td.col-md-1
-                  $#{order.total || 0.0}
+                  $#{order.total_price || 0.0}
                 %td.col-md-2= time_ago_in_words(order.created_at, include_seconds: true) + ' ago'
-                %td.col-md-2= order.status
+                %td.col-md-2= order.payment_status
                 

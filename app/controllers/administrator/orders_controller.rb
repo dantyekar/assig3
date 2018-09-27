@@ -1,4 +1,5 @@
 class Administrator::OrdersController < Administrator::BaseController
+  
   def index
     @orders = Order.all.paginate(page: params[:page], per_page: 10)
   end
@@ -13,10 +14,10 @@ class Administrator::OrdersController < Administrator::BaseController
   private
 
     def set_order
-      @order=Order.find(params[:order_id])
+      @order = Order.find(params[:order_id])
     end
 
     def order_params
-      params[:order].permit(:status)
+      params[:order].permit(:payment_status)
     end
 end

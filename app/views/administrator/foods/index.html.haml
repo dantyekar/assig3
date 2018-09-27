@@ -18,7 +18,7 @@
               %td= link_to "#{food.name}", edit_food_path(food.id)
               %td= food.description
               %td= food.price
-              %td= !food.category.nil? ? food.category.title : 'none yet'
+              %td= food.category.present? ? food.category.title : 'none yet'
               %td= food.updated_at.strftime("%Y %e %d")
               %td
                 = button_to food_path(food.id), :class => "clear-button", method: :delete do

@@ -17,10 +17,10 @@
               %tr
                 %td.col-md-2= order.user.first_name
                 %td.col-md-1
-                  $#{order.total || 0.0}
+                  $#{order.total_price || 0.0}
                 %td.col-md-2= time_ago_in_words(order.created_at, include_seconds: true) + ' ago'
-                = form_for order, url: { controller: 'administrator/orders', action: 'update', order_id: order.id, status: order.status }, method: :patch  do |f|
-                  %td.col-md-1= f.select :status, options_for_status, selected: order.status
+                = form_for order, url: { controller: 'orders', action: 'update', order_id: order.id, payment_status: order.payment_status }, method: :patch  do |f|
+                  %td.col-md-1= f.select :payment_status, options_for_status, selected: order.payment_status
                   %td.col-md-1= f.submit 'Confirm'
 
 - else

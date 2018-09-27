@@ -1,24 +1,19 @@
 @import "bootstrap";
-
 * {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
-
 html {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
-
 body {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
 }
-
-div.slidecontainer{
-  height:10px;
+div.slidecontainer {
+  height: 10px;
 }
-
 div.range-slider {
   position: relative;
   width: 200px;
@@ -26,7 +21,6 @@ div.range-slider {
   float: left;
   text-align: center;
 }
-
 div.range-slider input[type="range"] {
   pointer-events: none;
   position: absolute;
@@ -36,7 +30,7 @@ div.range-slider input[type="range"] {
   border-radius: 2px;
   background: #F1EFEF;
   box-shadow: 0px 0px 20px black;
-  top:3px;
+  top: 3px;
   vertical-align: middle;
   -webkit-box-shadow: inset 0 1px 0 0 #cdc6c6, inset 0 -1px 0 0 #d9d4d4;
   left: 0;
@@ -46,7 +40,6 @@ div.range-slider input[type="range"] {
   margin: 0;
   padding: 0;
 }
-
 div.range-slider input[type="range"]::-webkit-slider-thumb {
   pointer-events: all;
   position: relative;
@@ -65,7 +58,6 @@ div.range-slider input[type="range"]::-webkit-slider-thumb {
   background-image: radial-gradient(black 20%, white 20%, white 98%, black 98%);
   /* W3C */
 }
-
 div.range-slider input[type="range"]::-moz-range-thumb {
   pointer-events: all;
   position: relative;
@@ -79,7 +71,6 @@ div.range-slider input[type="range"]::-moz-range-thumb {
   background-image: radial-gradient(black 20%, white 20%, white 98%, black 98%);
   /* W3C */
 }
-
 div.range-slider input[type="range"]::-ms-thumb {
   pointer-events: all;
   position: relative;
@@ -92,84 +83,70 @@ div.range-slider input[type="range"]::-ms-thumb {
   background-image: radial-gradient(black 20%, white 20%, white 98%, black 98%);
   /* W3C */
 }
-
 div.range-slider input[type=range]::-moz-range-track {
   position: relative;
   z-index: -1;
   background-color: black;
   border: 0;
 }
-
 div.range-slider input[type=range]:last-of-type::-moz-range-track {
   -moz-appearance: none;
   background: none transparent;
   border: 0;
 }
-
 div.range-slider input[type=range]::-moz-focus-outer {
   border: 0;
 }
-
 #navbarNav ul li {
   text-align: center;
 }
-
 .headerText {
   text-align: center;
 }
-
 .homeHeader {
   background-image: url(https://isorepublic.com/wp-content/uploads/2016/11/coffee-shop.jpg);
-  background-size:cover;
+  background-size: cover;
   background-position: center center;
   width: 100%;
 }
-
 .aboutHeader {
   background-image: url(https://www.desktopbackground.org/download/1920x1200/2013/09/04/633756_question-marks-wallpapers_1920x1680_h.jpg);
-  background-size:cover;
+  background-size: cover;
   background-position: center center;
   width: 100%;
 }
-
 .serviceHeader {
   background-image: url(http://161pizza.com/images/banner-home1.jpg);
-  background-size:cover;
+  background-size: cover;
   background-position: center center;
   width: 100%;
 }
-
 .blogHeader {
   background-image: url(https://images8.alphacoders.com/679/679478.jpg);
-  background-size:cover;
+  background-size: cover;
   background-position: center center;
   width: 100%;
 }
-
 .contactsHeader {
   background-image: url(https://images5.alphacoders.com/699/699273.png);
-  background-size:cover;
+  background-size: cover;
   background-position: center center;
   width: 100%;
 }
-
 .jumbotron {
-    background: none;
-    margin-bottom: 0;
+  background: none;
+  margin-bottom: 0;
 }
-
 .navbar {
   padding-left: 10%;
   padding-right: 10%;
 }
-
 .texty {
-  color:white !important;
-  text-shadow:3px 3px 10px #ccc, 3px 3px 10px #000, -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  color: white !important;
+  text-shadow: 3px 3px 10px #ccc, 3px 3px 10px #000, -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   font-family: Verdana !important;
   font-weight: 500;
 }
-
 #logoText {
   padding: 4px 5px;
   border: 0px;
@@ -180,66 +157,55 @@ div.range-slider input[type=range]::-moz-focus-outer {
   font-family: Verdana !important;
   letter-spacing: 1px;
 }
-
 .logoImg {
   border-radius: 15px;
   box-shadow: 0px 0px 10px black;
 }
-
-#menuTop li{
+#menuTop li {
   font-family: Verdana !important;
-  line-height:8px;
+  line-height: 8px;
   font-size: 11px;
   letter-spacing: 2px;
   transition: transform .2s;
 }
-
-.title, .description{
+.title, .description {
   font-family: Verdana !important;
 }
-
 .title {
   font-weight: 525;
   line-height: 20px;
   border: 0;
 }
-
-#menuTop li:hover{
-  transform:scale(1.2);
+#menuTop li:hover {
+  transform: scale(1.2);
 }
-
-.navbar-toggler{
-  filter:invert(100%);
+.navbar-toggler {
+  filter: invert(100%);
   box-shadow: 0px 0px 10px black;
   transition: transform .2s;
 }
-
-.navbar-toggler:hover{
-  transform:scale(1.1);
+.navbar-toggler:hover {
+  transform: scale(1.1);
 }
-
 .fa-utensils {
-  color:white;
+  color: white;
 }
-
-@media (max-width: 992px){
-  .bg-custom{
+@media (max-width: 992px) {
+  .bg-custom {
     background-image: url(https://st.depositphotos.com/1043285/3079/i/950/depositphotos_30797549-stock-photo-coffee-beans-on-vintage-background.jpg);
-    background-size:cover;
+    background-size: cover;
     background-position: center center;
     border-radius: 0 0 15px 15px;
     box-shadow: 0 0 10px white;
   }
-  .middot{
+  .middot {
     visibility: hidden;
   }
 }
-
-.middot{
+.middot {
   color: orange;
-  border:0;
+  border: 0;
 }
-
 .score {
   display: inline-flex;
   flex-wrap: wrap;
@@ -248,14 +214,14 @@ div.range-slider input[type=range]::-moz-focus-outer {
   font-size: 13px;
   align-content: center;
 }
-
 /* Navbar container */
+
 .sortingNav {
   /*overflow: visible;*/
   background-color: #333;
 }
-
 /* Links inside the navbar */
+
 .sortingNav a {
   float: left;
   font-size: 16px;
@@ -264,8 +230,8 @@ div.range-slider input[type=range]::-moz-focus-outer {
   padding: 14px 16px;
   text-decoration: none;
 }
-
 /* The dropdown container */
+
 .dropdown {
   border-radius: 5px;
   float: left;
@@ -273,15 +239,14 @@ div.range-slider input[type=range]::-moz-focus-outer {
   padding-right: 20px;
   padding-left: 20px;
 }
-
 #priceTag {
   letter-spacing: 2px;
   font-size: 9px;
   font-weight: 900;
   font-family: Verdana !important;
 }
-
 /* Dropdown button */
+
 .dropdown .dropbtn {
   letter-spacing: 2px;
   font-size: 9px;
@@ -292,31 +257,31 @@ div.range-slider input[type=range]::-moz-focus-outer {
   color: black;
   padding: 5px 5px;
   background-color: inherit;
-  font-family: inherit; /* Important for vertical align on mobile phones */
-  margin: 0; /* Important for vertical align on mobile phones */
-
+  font-family: inherit;
+  /* Important for vertical align on mobile phones */
+  margin: 0;
+  /* Important for vertical align on mobile phones */
 }
-
 .sortingNav a:hover, .dropdown:hover .dropbtn {
   background-color: #c2c3c4;
-  border-radius:5px;
+  border-radius: 5px;
 }
-
 .sortingNav a, .dropdown .dropbtn {
   background-color: none;
 }
-
 /* Dropdown content (hidden by default) */
+
 .dropdown-content {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-/*  min-width: 160px;
-*/  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  /*  min-width: 160px;
+*/
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
-
 /* Links inside the dropdown */
+
 .dropdown-content a {
   float: none;
   color: black;
@@ -325,21 +290,19 @@ div.range-slider input[type=range]::-moz-focus-outer {
   display: block;
   text-align: left;
 }
-
 /* Add a grey background color to dropdown links on hover */
+
 .dropdown-content a:hover {
   background-color: #cccccc;
 }
-
 /* Show the dropdown menu on hover */
+
 .dropdown:hover .dropdown-content {
   display: block;
 }
-
 .fa-angle-down {
   color: orange;
 }
-
 .card {
   text-align: center;
   transition: transform .3s;
@@ -349,61 +312,50 @@ div.range-slider input[type=range]::-moz-focus-outer {
   max-width: 200px;
   margin: 0 auto;
 }
-
 .card:hover {
   transform: scale(1.1);
   box-shadow: 0px 0px 10px black;
   z-index: 7;
 }
-
 .card-body .card-text {
   font-size: 12px;
-  color:gray;
+  color: gray;
 }
-
 .card-body {
   height: 150px;
-  position:relative;
+  position: relative;
 }
-
-.card-img-top{
-  border-radius:10px 10px 0 0;
-  height:126px;
+.card-img-top {
+  border-radius: 10px 10px 0 0;
+  height: 126px;
 }
-
-.card-body .price{
-  font-size:16px;
-  color:orange;
+.card-body .price {
+  font-size: 16px;
+  color: orange;
 }
-
 .price {
-  position:absolute;
+  position: absolute;
   bottom: 5%;
-  left:5%;
-  right:5%;
+  left: 5%;
+  right: 5%;
 }
-
 .foodCategory {
-  position:absolute;
-  font-family:Georgia, serif;
+  position: absolute;
+  font-family: Georgia, serif;
   bottom: 20%;
-  left:10%;
+  left: 10%;
   right: 10%;
 }
-
 .card-text {
   margin-bottom: 5px;
 }
-
 div.col-md-3 {
   padding: 2px;
   max-width: 200px;
 }
-
 .foodContents {
   margin: 0 auto;
 }
-
 div.row {
   width: fit-content;
   margin: 0 auto;
@@ -411,18 +363,15 @@ div.row {
   display: flex;
   flex-wrap: wrap;
 }
-
-button.navbar-toggler{
-  background-color: rgba(255,255,255,0.4);
+button.navbar-toggler {
+  background-color: rgba(255, 255, 255, 0.4);
 }
-
-#sliderValue1, #sliderValue2{
+#sliderValue1, #sliderValue2 {
   font-size: 10px;
-  color:gray;
-
+  color: gray;
 }
-
 /* footer */
+
 footer {
   margin-top: 5px;
   padding-top: 5px;
@@ -446,101 +395,84 @@ footer {
     }
   }
 }
-
 .homeImages {
   width: 100%;
   height: 100%;
   border-radius: 10px;
 }
-
 /* parallax */
+
 .parallax {
-    /* The image used */
-    background-image: url(https://images6.alphacoders.com/712/712437.jpg);
-
-    /* Full height */
-    height: 450px;
-
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  /* The image used */
+  background-image: url(https://images6.alphacoders.com/712/712437.jpg);
+  /* Full height */
+  height: 450px;
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .parallax2 {
-    /* The image used */
-    background-image: url(https://images5.alphacoders.com/366/366218.jpg);
-
-    /* Full height */
-    height: 450px;
-
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  /* The image used */
+  background-image: url(https://images5.alphacoders.com/366/366218.jpg);
+  /* Full height */
+  height: 450px;
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .parallax3 {
-    /* The image used */
-    background-image: url(https://images2.alphacoders.com/303/30312.png);
-
-    /* Full height */
-    height: 450px;
-
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  /* The image used */
+  background-image: url(https://images2.alphacoders.com/303/30312.png);
+  /* Full height */
+  height: 450px;
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .parallax4 {
-    /* The image used */
-    background-image: url(https://images.alphacoders.com/557/557503.jpg);
-
-    /* Full height */
-    height: 450px;
-
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  /* The image used */
+  background-image: url(https://images.alphacoders.com/557/557503.jpg);
+  /* Full height */
+  height: 450px;
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-
 .learnMore {
   color: black;
   transition: transform .2s;
 }
-
 .learnMore:hover {
-  transform:scale(1.2);
+  transform: scale(1.2);
 }
-
 div.col-sm-8 {
   margin: auto 0;
 }
-
 .image-thumb {
   border-radius: 10px 10px 0 0;
 }
-
 .header1stuff {
   background-color: #3e2511 !important;
-  .ul{
-    .li{
+  .ul {
+    .li {
       padding-top: 6px;
     }
   }
 }
-
 div.row {
   margin: auto 20px;
 }
-
 .dropdown-menu li {
   margin: 2px 0;
 }
-
 .tablFoot {
-  border-top:2px solid #3e2511;
+  border-top: 2px solid #3e2511;
 }

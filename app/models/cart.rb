@@ -1,20 +1,17 @@
-class Cart
-attr_reader :cart_data
+class Cart < ApplicationRecord
+  has_many :order_items, dependent: :destroy
 
-	def initialize(cart_data)
-		@cart_data = cart_data || {}
-	end
+  def add_food(food)
+    current_item = order_items.find_by(food_id: food.id)
+    if current_item
+      current_item.quantity += 1
+    else
+      current_item = order_items.build(food_id: food.id)
+    end
+    current_item
+  end
 
-	def increment(item_id)
-		@cart_data[item_id] ||= 0
-		@cart_data[item_id] += 1
-	end
-
-	def destroy
-		@cart_data = nil
-	end
-
-	def delete
-		@cart_data[item_id] = 0
-	end
+  def total_price
+    order_items.to_a.sum { |item| item.total_price }
+  end
 end

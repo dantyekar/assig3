@@ -39,10 +39,10 @@ A1 = User.create(first_name: "admin",
                  password_confirmation: "parola1234",
                  role: "admin")
 
-O1 = Order.create(status: "Completed", transaction_id: "123ss1", user_id: U1.id)
-O2 = Order.create(status: "Cancelled", transaction_id: "123ss2", user_id: U1.id)
-O3 = Order.create(status: "Processing", transaction_id: "123ss3", user_id: U1.id)
-O4 = Order.create(status: "Processing", transaction_id: "123ss4", user_id: U1.id)
+O1 = Order.create(payment_status: "Completed", txn_id: "123ss1", user_id: U1.id)
+O2 = Order.create(payment_status: "Cancelled", txn_id: "123ss2", user_id: U1.id)
+O3 = Order.create(payment_status: "Processing", txn_id: "123ss3", user_id: U1.id)
+O4 = Order.create(payment_status: "Processing", txn_id: "123ss4", user_id: U1.id)
 
 Order_Item1 = OrderItem.create(quantity: 3, food_id: F1.id, order_id: 1)
 Order_Item2 = OrderItem.create(quantity: 2, food_id: F2.id, order_id: 1)

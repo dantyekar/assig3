@@ -4,34 +4,32 @@
 = render 'layouts/flash_messages'
 .container
   .pad-bottom
-    - if @ordered_foods.length == 0
+    - if @cart.order_items.length == 0
       %p.text-center Your cart is empty
     - else
       %table.table.table-striped
         %thead
           %tr{:style => "background-color:#BCAAA4;"}
-            %th{ "data-field" => "id" } No.
+            %th{ "data-field" => "id" } Food id#
             %th{ "data-field" => "name" } Name
             %th{ "data-field" => "description" } Description
             %th{ "data-field" => "quantity" } Quantity
             %th{ "data-field" => "price" } Price
             %th{ "data-field" => "line total" } Line Total
         %tbody
-          - @ordered_foods.each do |index, details|
-            - food_id = details[:food][:id]
+          - @cart.order_items.each do |item|
+            - food_id = item.food.id
             %tr
-              %td= index
-              %td{ id: "food_name_#{food_id}" }= details[:food]['name']
-              %td{ id: "food_desc_#{food_id}" }= details[:food]['description']
-              %td{ id: "food_qty_#{food_id}" }
-                = form_for 'quantity', url: { controller: 'cart_items', action: 'update', food_id: details[:food][:id], id: index }, method: :patch  do |f|
-                  = f.number_field details[:qty], min: 1, value: details[:qty], :class => 'qty qty-editable-width', 'data-message' => food_id
-              %td{ id: "food_unit_price_#{food_id}" }= details[:food]['price']
+              %td= item.food.id
+              %td{ id: "food_name_#{food_id}" }= item.food.name
+              %td{ id: "food_desc_#{food_id}" }= item.food.description
+              %td{ id: "food_qty_#{food_id}" }= item.quantity
+              %td{ id: "food_unit_price_#{food_id}" }= item.food.price
               %td
                 $
-                %span.line-total{ 'data-message' => "#{details[:food]['price']}", id: "food_sub_total_#{details[:food][:id]}" }= details[:food]['price'].to_i * details[:qty].to_i
+                %span.line-total= item.total_price
               %td
-                = button_to cart_item_delete_path(details[:food][:id]), :class => 'clear-button', method: :delete  do
+                = button_to order_item_path(item.id), :class => 'clear-button', method: :delete  do
                   %i.material-icons clear
         %tfoot
           %tr{:style => "border-top:2px solid #3e2511"}
@@ -42,5 +40,5 @@
             %td
             %td Subtotal
             %td#total
-              $#{@total}
+              $#{@cart.total_price}
       = button_to 'Checkout', checkout_path, :class => 'btn btn-info'

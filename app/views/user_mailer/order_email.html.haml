@@ -3,31 +3,23 @@
     %table.responsive-table
       %thead
         %tr{ :style => 'background-color:#BCAAA4;' }
-          %th{ 'data-field' => 'id' } No.
+          %th{ 'data-field' => 'id' } Food id#
           %th{ 'data-field' => 'name' } Name
           %th{ 'data-field' => 'description' } Description
           %th{ 'data-field' => 'price' } Price
           %th{ 'data-field' => 'quantity' } Quantity
           %th{ 'data-field' => 'line total' } Line Total
       %tbody
-        - @current_order['ordered_items'].each do |index, details|
-          - @current_order['sub_total'] += details['food']['price'] * details['qty']
+        - @cart.order_items.each do |item|
+          - food_id = item.food.id
           %tr
-            %td= index
-            %td= details['food']['name']
-            %td= details['food']['description']
-            %td= details['food']['price']
-            %td= details['qty']
+            %td= item.food.id
+            %td= item.food.name
+            %td= item.food.description
+            %td= item.food.price
+            %td= item.quantity
             %td
-              $#{@current_order['sub_total']}
-      %tr{ :style => 'border-top:1px solid #3e2511' }
-        %td
-        %td
-        %td
-        %td Subtotal
-        %td
-        %td
-          $#{@current_order['sub_total']}
+              $#{item.total_price}
       %tfoot
         %tr{ :style => 'border-top:2px solid #3e2511' }
           - @current_order['total'] = @current_order['sub_total']
@@ -37,6 +29,6 @@
           %td Total
           %td
           %td#total
-            $#{@current_order['total']}
+            $#{@cart.total_price}
   %p
     Thanks for choosing #{link_to 'Eureka Caffee', 'https://peaceful-garden-12705.herokuapp.com/'}

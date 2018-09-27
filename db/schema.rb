@@ -15,6 +15,11 @@ ActiveRecord::Schema.define(version: 2018_10_13_100054) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "title"
     t.string "description"
@@ -25,7 +30,7 @@ ActiveRecord::Schema.define(version: 2018_10_13_100054) do
   create_table "foods", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.float "price"
+    t.decimal "price", precision: 8, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "food_image_file_name"
@@ -37,20 +42,23 @@ ActiveRecord::Schema.define(version: 2018_10_13_100054) do
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.integer "quantity"
     t.bigint "food_id"
+    t.bigint "cart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "quantity", default: 1
     t.bigint "order_id"
+    t.index ["cart_id"], name: "index_order_items_on_cart_id"
     t.index ["food_id"], name: "index_order_items_on_food_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "status", default: "Pending"
-    t.integer "total"
+    t.string "payment_status", default: "Pending"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "transaction_id"
+    t.string "txn_id"
     t.string "invoice"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -70,5 +78,7 @@ ActiveRecord::Schema.define(version: 2018_10_13_100054) do
   end
 
   add_foreign_key "foods", "categories"
+  add_foreign_key "order_items", "carts"
+  add_foreign_key "order_items", "foods"
   add_foreign_key "order_items", "orders"
 end
