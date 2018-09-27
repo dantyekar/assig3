@@ -10,13 +10,9 @@ module ApplicationHelper
   end
 
   def items_in_cart
-    items = 0
-    if session[:cart].present? && session[:cart].length > 0
-      session[:cart].each do |_key, value|
-        items += value
-      end
+    if session[:cart_id.present?]
+      session[:cart_id].order_items.to_a.sum { |item| item.quantity }
     end
-    items
   end
 
   def this_food_in_cart(food)

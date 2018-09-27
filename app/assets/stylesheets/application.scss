@@ -97,37 +97,37 @@ div.range-slider input[type=range]:last-of-type::-moz-range-track {
 div.range-slider input[type=range]::-moz-focus-outer {
   border: 0;
 }
-#navbarNav ul li {
+#navbar-nav ul li {
   text-align: center;
 }
 .headerText {
   text-align: center;
 }
-.homeHeader {
+.home-header {
   background-image: url(https://isorepublic.com/wp-content/uploads/2016/11/coffee-shop.jpg);
   background-size: cover;
   background-position: center center;
   width: 100%;
 }
-.aboutHeader {
+.about-header {
   background-image: url(https://www.desktopbackground.org/download/1920x1200/2013/09/04/633756_question-marks-wallpapers_1920x1680_h.jpg);
   background-size: cover;
   background-position: center center;
   width: 100%;
 }
-.serviceHeader {
+.service-header {
   background-image: url(http://161pizza.com/images/banner-home1.jpg);
   background-size: cover;
   background-position: center center;
   width: 100%;
 }
-.blogHeader {
+.blog-header {
   background-image: url(https://images8.alphacoders.com/679/679478.jpg);
   background-size: cover;
   background-position: center center;
   width: 100%;
 }
-.contactsHeader {
+.contacts-header {
   background-image: url(https://images5.alphacoders.com/699/699273.png);
   background-size: cover;
   background-position: center center;
@@ -216,13 +216,13 @@ div.range-slider input[type=range]::-moz-focus-outer {
 }
 /* Navbar container */
 
-.sortingNav {
+.sorting-nav {
   /*overflow: visible;*/
   background-color: #333;
 }
 /* Links inside the navbar */
 
-.sortingNav a {
+.sorting-nav a {
   float: left;
   font-size: 16px;
   color: black;
@@ -262,11 +262,11 @@ div.range-slider input[type=range]::-moz-focus-outer {
   margin: 0;
   /* Important for vertical align on mobile phones */
 }
-.sortingNav a:hover, .dropdown:hover .dropbtn {
+.sorting-nav a:hover, .dropdown:hover .dropbtn {
   background-color: #c2c3c4;
   border-radius: 5px;
 }
-.sortingNav a, .dropdown .dropbtn {
+.sorting-nav a, .dropdown .dropbtn {
   background-color: none;
 }
 /* Dropdown content (hidden by default) */
@@ -395,7 +395,7 @@ footer {
     }
   }
 }
-.homeImages {
+.home-images {
   width: 100%;
   height: 100%;
   border-radius: 10px;
@@ -459,7 +459,7 @@ div.col-sm-8 {
 .image-thumb {
   border-radius: 10px 10px 0 0;
 }
-.header1stuff {
+.header-1-wrap {
   background-color: #3e2511 !important;
   .ul {
     .li {
@@ -473,6 +473,15 @@ div.row {
 .dropdown-menu li {
   margin: 2px 0;
 }
-.tablFoot {
+.table-foot {
   border-top: 2px solid #3e2511;
+}
+.table-head {
+  background-color: #BCAAA4;
+}
+.mailer {
+  border: 1px solid black; 
+  padding: 10px; 
+  margin: 30px 100px; 
+  text-align: center;
 }

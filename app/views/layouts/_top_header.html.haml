@@ -1,15 +1,15 @@
-.navbarStuffRelatedTop
+.div-nav
   %nav.navbar.navbar-static-top.navbar-expand-lg.navbar-light
     %div
       = link_to home_path do
-        %img.d-inline-block.align-top.logoImg{:alt => '', :height => '30', :src => 'https://banner2.kisspng.com/20180420/xpw/kisspng-coffee-cup-cafe-coffee-bean-shopping-logo-design-free-download-5ada9047c59302.3606348915242732238093.jpg', :width => '30'}/
+        %img.d-inline-block.align-top.logoImg{ :alt => '', :height => '30', :src => 'https://banner2.kisspng.com/20180420/xpw/kisspng-coffee-cup-cafe-coffee-bean-shopping-logo-design-free-download-5ada9047c59302.3606348915242732238093.jpg', :width => '30' }/
       = link_to home_path, id: 'logoText', class: 'navbar-brand texty' do
         EUREKA
         %br/
         CAFFEE
-    %button.navbar-toggler{'aria-controls' => 'navbarNav', 'aria-expanded' => 'false', 'aria-label' => 'Toggle navigation', 'data-target' => '#navbarNav', 'data-toggle' => 'collapse', :type => 'button'}
+    %button.navbar-toggler{ 'aria-controls' => 'navbar-nav', 'aria-expanded' => 'false', 'aria-label' => 'Toggle navigation', 'data-target' => '#navbar-nav', 'data-toggle' => 'collapse', :type => 'button' }
       %span.navbar-toggler-icon
-    #navbarNav.collapse.navbar-collapse.bg-custom
+    #navbar-nav.collapse.navbar-collapse.bg-custom
       %ul#menuTop.navbar-nav.ml-auto
         %li.nav-item.active
           = link_to home_path, class: 'nav-link texty' do
@@ -34,10 +34,9 @@
         %li{ :class => "cart-holder #{cart_properties['status']}" }
           = link_to carts_path, class: 'cart left no_left_pad nav-link texty', id: 'cart'  do
             %i.fas.fa-shopping-cart
-            = cart_properties['items_count']
         - if current_user
           %li.nav-item.dropdown
-            %a.dropdown-toggle.texty.nav-link{'data-toggle' => 'dropdown', :href => '#'}
+            %a.dropdown-toggle.texty.nav-link{ 'data-toggle' => 'dropdown', :href => '#' }
               Account
             %ul.dropdown-menu.texty
               %li= link_to 'Profile', current_user

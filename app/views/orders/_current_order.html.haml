@@ -1,6 +1,6 @@
 %table.table.table-striped
-  %thead
-    %tr{:style => 'background-color:#BCAAA4;'}
+  %thead.table-head
+    %tr
       %th{ 'data-field' => 'id' } No.
       %th{ 'data-field' => 'name' } Name
       %th{ 'data-field' => 'description' } Description
@@ -17,7 +17,7 @@
         %td= order.quantity
         %td
           $#{order.total_price}
-  %tr{ style: 'border-top:1px solid #3e2511' }
+  %tr.table-foot
     %td
     %td
     %td

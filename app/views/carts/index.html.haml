@@ -1,6 +1,6 @@
 = javascript_include_tag 'application', 'data-turbolinks-track' => false
-.header1stuff
-  = render 'layouts/topHeader'
+.header-1-wrap
+  = render 'layouts/top_header'
 = render 'layouts/flash_messages'
 .container
   .pad-bottom
@@ -8,8 +8,8 @@
       %p.text-center Your cart is empty
     - else
       %table.table.table-striped
-        %thead
-          %tr{:style => "background-color:#BCAAA4;"}
+        %thead.table-head
+          %tr
             %th{ "data-field" => "id" } Food id#
             %th{ "data-field" => "name" } Name
             %th{ "data-field" => "description" } Description
@@ -31,8 +31,8 @@
               %td
                 = button_to order_item_path(item.id), :class => 'clear-button', method: :delete  do
                   %i.material-icons clear
-        %tfoot
-          %tr{:style => "border-top:2px solid #3e2511"}
+        %tfoot.table-foot
+          %tr
             %td
             %td
             %td

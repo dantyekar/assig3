@@ -1,4 +1,4 @@
-.mailer{ :style => 'border: 1px solid black; padding: 10px; margin: 30px 100px; text-align: center' }
+.mailer
   %h3= "Dear #{@user.first_name}, "
   %h3
     = "Your order: #{@order.id} is now #{@order.payment_status} "

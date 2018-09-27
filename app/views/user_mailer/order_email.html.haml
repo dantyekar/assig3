@@ -1,8 +1,8 @@
-.mailer{ :style => 'border: 1px solid black; padding: 10px; margin: 30px 100px; text-align: center' }
+.mailer
   .full-height.scroll-bar
     %table.responsive-table
-      %thead
-        %tr{ :style => 'background-color:#BCAAA4;' }
+      %thead.table-head
+        %tr
           %th{ 'data-field' => 'id' } Food id#
           %th{ 'data-field' => 'name' } Name
           %th{ 'data-field' => 'description' } Description
@@ -20,9 +20,8 @@
             %td= item.quantity
             %td
               $#{item.total_price}
-      %tfoot
-        %tr{ :style => 'border-top:2px solid #3e2511' }
-          - @current_order['total'] = @current_order['sub_total']
+      %tfoot.table-foot
+        %tr
           %td
           %td
           %td
